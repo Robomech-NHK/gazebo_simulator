@@ -1,5 +1,10 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="omni_robot">
+  <xacro:arg name="enable_lidar" default="true"/>
+  <xacro:arg name="lidar_visualize" default="true"/>
+  <xacro:arg name="lidar_update_rate" default="20"/>
+  <xacro:arg name="lidar_samples" default="1440"/>
+
   <xacro:include filename="$(find gazebo_simulator)/models/omni_robot/omni_common.xacro"/>
   <xacro:include filename="$(find gazebo_simulator)/models/omni_robot/omni_wheel.xacro"/>
   <xacro:include filename="$(find gazebo_simulator)/models/omni_robot/lidar.xacro"/>
@@ -37,13 +42,18 @@
     </inertial>  
   </link>
 
-  <xacro:lidar_macro
-    prefix="lidar"
-    parent="base_link"
-    xyz="-0.3 0 -0.075"
-    rpy="0 0 0"
-    angle_min="${80 * pi / 180}"
-    angle_max="${280 * pi / 180}"/>
+  <xacro:if value="$(arg enable_lidar)">
+    <xacro:lidar_macro
+      prefix="lidar"
+      parent="base_link"
+      xyz="-0.3 0 -0.075"
+      rpy="0 0 0"
+      angle_min="${80 * pi / 180}"
+      angle_max="${280 * pi / 180}"
+      visualize="$(arg lidar_visualize)"
+      update_rate="$(arg lidar_update_rate)"
+      samples="$(arg lidar_samples)"/>
+  </xacro:if>
 
   <joint name="wheel0_attach_joint" type="fixed">
     <parent link="base_link"/>

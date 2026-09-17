@@ -120,7 +120,7 @@ def write_model_config(model_dir, model_name):
         config_file.write(model_config)
 
 
-def regenerate_model_sdf(ros2_ws, model_name, keep_control_plugins):
+def regenerate_model_sdf(ros2_ws, model_name, keep_control_plugins, xacro_arguments=None):
     model_dir = os.path.join(ros2_ws, f"src/gazebo_simulator/models/{model_name}")
     xacro_path = os.path.join(model_dir, "urdf", f"{model_name}.xacro")
     model_sdf_path = os.path.join(model_dir, "model.sdf")
@@ -134,9 +134,13 @@ def regenerate_model_sdf(ros2_ws, model_name, keep_control_plugins):
         return
 
     urdf_path = os.path.join(model_dir, f"{model_name}.urdf")
+    xacro_command = ["xacro", xacro_path, f"robot_name:={model_name}"]
+    for key, value in (xacro_arguments or {}).items():
+        xacro_command.append(f"{key}:={value}")
+
     with open(urdf_path, "w", encoding="utf-8") as urdf_file:
         subprocess.run(
-            ["xacro", xacro_path, f"robot_name:={model_name}"],
+            xacro_command,
             check=True,
             stdout=urdf_file,
         )
@@ -217,15 +221,30 @@ def launch_setup(context, *args, **kwargs):
     spawn_models = LaunchConfiguration("spawn_models").perform(context)
     static_models = parse_name_list(LaunchConfiguration("static_models").perform(context))
     enable_localization = launch_bool(LaunchConfiguration("enable_localization").perform(context))
+    enable_control = launch_bool(LaunchConfiguration("enable_control").perform(context))
+    gui = launch_bool(LaunchConfiguration("gui").perform(context))
+    headless_rendering = launch_bool(LaunchConfiguration("headless_rendering").perform(context))
+    bridge_scan = launch_bool(LaunchConfiguration("bridge_scan").perform(context))
     rviz = launch_bool(LaunchConfiguration("rviz").perform(context))
+    render_engine = LaunchConfiguration("render_engine").perform(context)
+    render_engine_gui = LaunchConfiguration("render_engine_gui").perform(context)
+    render_engine_server = LaunchConfiguration("render_engine_server").perform(context)
+    lidar_options = {
+        "enable_lidar": LaunchConfiguration("enable_lidar").perform(context),
+        "lidar_visualize": LaunchConfiguration("lidar_visualize").perform(context),
+        "lidar_update_rate": LaunchConfiguration("lidar_update_rate").perform(context),
+        "lidar_samples": LaunchConfiguration("lidar_samples").perform(context),
+    }
 
     specs = parse_spawn_models(spawn_models)
     controlled_specs = validate_control_targets(specs, static_models)
+    active_controlled_specs = controlled_specs if enable_control else []
     model_names = sorted({spec.model_name for spec in specs})
 
     for name in model_names:
-        keep_control_plugins = any(spec.model_name == name for spec in controlled_specs)
-        regenerate_model_sdf(ros2_ws, name, keep_control_plugins)
+        keep_control_plugins = any(spec.model_name == name for spec in active_controlled_specs)
+        model_xacro_arguments = lidar_options if name == "omni_robot" else None
+        regenerate_model_sdf(ros2_ws, name, keep_control_plugins, model_xacro_arguments)
 
     world_path = build_world_sdf(
         ros2_ws,
@@ -238,9 +257,22 @@ def launch_setup(context, *args, **kwargs):
     gz_model_path = append_env_path(os.environ.get("GZ_MODEL_PATH", ""), models_path)
     gz_plugin_path = append_env_path(os.environ.get("GZ_SIM_SYSTEM_PLUGIN_PATH", ""), "/opt/ros/jazzy/lib")
 
+    gz_cmd = ["gz", "sim", "-r"]
+    if not gui:
+        gz_cmd.append("-s")
+    if headless_rendering:
+        gz_cmd.append("--headless-rendering")
+    if render_engine:
+        gz_cmd.extend(["--render-engine", render_engine])
+    if render_engine_gui:
+        gz_cmd.extend(["--render-engine-gui", render_engine_gui])
+    if render_engine_server:
+        gz_cmd.extend(["--render-engine-server", render_engine_server])
+    gz_cmd.append(world_path)
+
     actions = [
         ExecuteProcess(
-            cmd=["gz", "sim", "-r", world_path],
+            cmd=gz_cmd,
             output="screen",
             additional_env={
                 "GZ_SIM_RESOURCE_PATH": gz_resource_path,
@@ -258,14 +290,19 @@ def launch_setup(context, *args, **kwargs):
         if not os.path.isfile(xacro_path):
             continue
 
-        robot_description = Command([
+        xacro_command = [
             "xacro ",
             xacro_path,
             " robot_name:=",
             spec.model_name,
-        ])
+        ]
+        if spec.model_name == "omni_robot":
+            for key, value in lidar_options.items():
+                xacro_command.extend([f" {key}:=", value])
+
+        robot_description = Command(xacro_command)
         node_kwargs = {}
-        if spec not in controlled_specs:
+        if spec not in active_controlled_specs:
             node_kwargs["namespace"] = spec.instance_name
         actions.append(
             Node(
@@ -285,7 +322,8 @@ def launch_setup(context, *args, **kwargs):
         bridge_arguments.append(
             f"/model/{spec.instance_name}/pose@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V"
         )
-    bridge_arguments.append("/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan")
+    if bridge_scan:
+        bridge_arguments.append("/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan")
     actions.append(
         Node(
             package="ros_gz_bridge",
@@ -295,7 +333,7 @@ def launch_setup(context, *args, **kwargs):
         )
     )
 
-    controlled_spec = controlled_specs[0] if controlled_specs else None
+    controlled_spec = active_controlled_specs[0] if active_controlled_specs else None
     if controlled_spec:
         joint_state_broadcaster_spawner = Node(
             package="controller_manager",
@@ -451,6 +489,61 @@ def generate_launch_description():
             "enable_localization",
             default_value="true",
             description="Start uec_localization fastlio2d_node/view_map for map->odom TF",
+        ),
+        DeclareLaunchArgument(
+            "enable_control",
+            default_value="true",
+            description="Start controller spawners, can_to_gazebo, gazebo_to_uodom, omni, and teleop",
+        ),
+        DeclareLaunchArgument(
+            "gui",
+            default_value="true",
+            description="Start Gazebo GUI. Set false to run gz sim server only (-s).",
+        ),
+        DeclareLaunchArgument(
+            "headless_rendering",
+            default_value="false",
+            description="Pass --headless-rendering to gz sim, useful for gpu_lidar in server-only tests",
+        ),
+        DeclareLaunchArgument(
+            "bridge_scan",
+            default_value="true",
+            description="Bridge /scan from Gazebo to ROS",
+        ),
+        DeclareLaunchArgument(
+            "enable_lidar",
+            default_value="true",
+            description="Include the omni_robot gpu_lidar sensor in generated SDF",
+        ),
+        DeclareLaunchArgument(
+            "lidar_visualize",
+            default_value="true",
+            description="Enable Gazebo visualization for the omni_robot gpu_lidar rays",
+        ),
+        DeclareLaunchArgument(
+            "lidar_update_rate",
+            default_value="20",
+            description="omni_robot gpu_lidar update rate in Hz",
+        ),
+        DeclareLaunchArgument(
+            "lidar_samples",
+            default_value="1440",
+            description="omni_robot gpu_lidar horizontal sample count",
+        ),
+        DeclareLaunchArgument(
+            "render_engine",
+            default_value="",
+            description="Optional gz sim --render-engine value, for example ogre2 or ogre",
+        ),
+        DeclareLaunchArgument(
+            "render_engine_gui",
+            default_value="",
+            description="Optional gz sim --render-engine-gui value",
+        ),
+        DeclareLaunchArgument(
+            "render_engine_server",
+            default_value="",
+            description="Optional gz sim --render-engine-server value",
         ),
         DeclareLaunchArgument(
             "rviz",

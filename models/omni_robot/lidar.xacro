@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:macro name="lidar_macro" params="parent prefix xyz rpy angle_min angle_max">
+  <xacro:macro name="lidar_macro" params="parent prefix xyz rpy angle_min angle_max visualize update_rate samples">
     <joint name="${prefix}_joint" type="fixed">
       <parent link="${parent}"/>
       <child link="${prefix}_link"/>
@@ -32,14 +32,14 @@
       <sensor type="gpu_lidar" name="${prefix}">
         <pose>0 0 0.025 0 0 0</pose>
         <always_on>true</always_on>
-        <visualize>true</visualize>
-        <update_rate>20</update_rate>
+        <visualize>${visualize}</visualize>
+        <update_rate>${update_rate}</update_rate>
         <topic>/scan</topic>
         <gz_frame_id>${prefix}_link</gz_frame_id>
         <ray>
           <scan>
             <horizontal>
-              <samples>1440</samples>
+              <samples>${samples}</samples>
               <resolution>1</resolution>
               <min_angle>${angle_min}</min_angle>
               <max_angle>${angle_max}</max_angle>
