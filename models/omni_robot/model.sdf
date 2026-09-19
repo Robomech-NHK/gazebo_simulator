@@ -205,8 +205,8 @@
       </visual>
       <sensor name='lidar' type='gpu_lidar'>
         <always_on>true</always_on>
-        <visualize>true</visualize>
-        <update_rate>20</update_rate>
+        <visualize>false</visualize>
+        <update_rate>40</update_rate>
         <topic>/scan</topic>
         <ray>
           <scan>

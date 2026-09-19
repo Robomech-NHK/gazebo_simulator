@@ -257,7 +257,9 @@ def launch_setup(context, *args, **kwargs):
     gz_model_path = append_env_path(os.environ.get("GZ_MODEL_PATH", ""), models_path)
     gz_plugin_path = append_env_path(os.environ.get("GZ_SIM_SYSTEM_PLUGIN_PATH", ""), "/opt/ros/jazzy/lib")
 
-    gz_cmd = ["gz", "sim", "-r"]
+    gz_cmd = [
+    os.path.expanduser("~/.local/bin/run-mesa-d3d12-fixed"),
+    "gz","sim","-r",]
     if not gui:
         gz_cmd.append("-s")
     if headless_rendering:
@@ -517,12 +519,12 @@ def generate_launch_description():
         ),
         DeclareLaunchArgument(
             "lidar_visualize",
-            default_value="true",
+            default_value="false",
             description="Enable Gazebo visualization for the omni_robot gpu_lidar rays",
         ),
         DeclareLaunchArgument(
             "lidar_update_rate",
-            default_value="20",
+            default_value="40",
             description="omni_robot gpu_lidar update rate in Hz",
         ),
         DeclareLaunchArgument(
@@ -547,8 +549,32 @@ def generate_launch_description():
         ),
         DeclareLaunchArgument(
             "rviz",
-            default_value="true",
+            default_value="false",
             description="Start RViz with the uec_localization FastLIO2D config",
         ),
         OpaqueFunction(function=launch_setup),
     ])
+
+
+
+
+# ### 今回定義されている設定
+
+# | 設定                     |       デフォルト | 意味                            |
+# | ---------------------- | ----------: | ----------------------------- |
+# | `world_file`           | `world.sdf` | 使用するGazeboワールド                |
+# | `spawn_models`         |       定数で指定 | 出現させるモデル・位置・姿勢                |
+# | `static_models`        |       定数で指定 | 動かない固定モデル                     |
+# | `enable_localization`  |      `true` | FastLIO2Dなど自己位置推定を起動          |
+# | `enable_control`       |      `true` | ロボット制御系を起動                    |
+# | `gui`                  |      `true` | Gazeboの画面を表示                  |
+# | `headless_rendering`   |     `false` | GUIなしでもレンダリングする               |
+# | `bridge_scan`          |      `true` | Gazeboの `/scan` をROS 2へBridge |
+# | `enable_lidar`         |      `true` | LiDARをモデルに含める                 |
+# | `lidar_visualize`      |     `false` | Gazebo上でLiDARの光線を可視化          |
+# | `lidar_update_rate`    |        `10` | LiDAR更新周期（10 Hz）              |
+# | `lidar_samples`        |       `720` | LiDARの水平方向サンプル数               |
+# | `render_engine`        |           空 | Gazebo全体の描画エンジン指定             |
+# | `render_engine_gui`    |           空 | GUI側の描画エンジン指定                 |
+# | `render_engine_server` |           空 | サーバー側の描画エンジン指定                |
+# | `rviz`                 |     `false` | RVizを起動するか                    |

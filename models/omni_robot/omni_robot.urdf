@@ -77,8 +77,8 @@
     <sensor name="lidar" type="gpu_lidar">
       <pose>0 0 0.025 0 0 0</pose>
       <always_on>true</always_on>
-      <visualize>True</visualize>
-      <update_rate>20</update_rate>
+      <visualize>False</visualize>
+      <update_rate>40</update_rate>
       <topic>/scan</topic>
       <gz_frame_id>lidar_link</gz_frame_id>
       <ray>
