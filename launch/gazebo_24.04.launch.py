@@ -472,85 +472,86 @@ def generate_launch_description():
         DeclareLaunchArgument(
             "world_file",
             default_value=DEFAULT_WORLD_FILE,
-            description="World template file inside models/world/",
+            description="models/world/ 内のワールドテンプレートファイル",
         ),
         DeclareLaunchArgument(
             "spawn_models",
             default_value=DEFAULT_SPAWN_MODELS,
             description=(
-                "Semicolon-separated models to include. "
-                "Use model[:x,y,z,roll,pitch,yaw] or model@instance[:x,y,z,roll,pitch,yaw]."
+                "読み込むモデルをセミコロン区切りで指定します。"
+                "model[:x,y,z,roll,pitch,yaw] または "
+                "model@instance[:x,y,z,roll,pitch,yaw] の形式で指定します。"
             ),
         ),
         DeclareLaunchArgument(
             "static_models",
             default_value=DEFAULT_STATIC_MODELS,
-            description="Comma-separated model or instance names that should be included as static",
+            description="静的モデルとして読み込むモデル名またはインスタンス名をカンマ区切りで指定します",
         ),
         DeclareLaunchArgument(
             "enable_localization",
-            default_value="true",
-            description="Start uec_localization fastlio2d_node/view_map for map->odom TF",
+            default_value="false",
+            description="map->odom TF のために uec_localization の fastlio2d_node/view_map を起動します",
         ),
         DeclareLaunchArgument(
             "enable_control",
             default_value="true",
-            description="Start controller spawners, can_to_gazebo, gazebo_to_uodom, omni, and teleop",
+            description="controller spawner、can_to_gazebo、gazebo_to_uodom、omni、teleop を起動します",
         ),
         DeclareLaunchArgument(
             "gui",
             default_value="true",
-            description="Start Gazebo GUI. Set false to run gz sim server only (-s).",
+            description="Gazebo GUI を起動します。false にすると gz sim のサーバーのみ（-s）を起動します",
         ),
         DeclareLaunchArgument(
             "headless_rendering",
             default_value="false",
-            description="Pass --headless-rendering to gz sim, useful for gpu_lidar in server-only tests",
+            description="gz sim に --headless-rendering を渡します。サーバーのみで gpu_lidar をテストする場合などに使用します",
         ),
         DeclareLaunchArgument(
             "bridge_scan",
             default_value="true",
-            description="Bridge /scan from Gazebo to ROS",
+            description="Gazebo の /scan を ROS にブリッジします",
         ),
         DeclareLaunchArgument(
             "enable_lidar",
             default_value="true",
-            description="Include the omni_robot gpu_lidar sensor in generated SDF",
+            description="生成する SDF に omni_robot の gpu_lidar センサーを含めます",
         ),
         DeclareLaunchArgument(
             "lidar_visualize",
             default_value="false",
-            description="Enable Gazebo visualization for the omni_robot gpu_lidar rays",
+            description="omni_robot の gpu_lidar のレーザーを Gazebo 上で可視化します",
         ),
         DeclareLaunchArgument(
             "lidar_update_rate",
             default_value="40",
-            description="omni_robot gpu_lidar update rate in Hz",
+            description="omni_robot の gpu_lidar の更新周波数（Hz）",
         ),
         DeclareLaunchArgument(
             "lidar_samples",
             default_value="1440",
-            description="omni_robot gpu_lidar horizontal sample count",
+            description="omni_robot の gpu_lidar の水平方向のサンプル数",
         ),
         DeclareLaunchArgument(
             "render_engine",
             default_value="",
-            description="Optional gz sim --render-engine value, for example ogre2 or ogre",
+            description="gz sim の --render-engine に渡す値を指定します（例: ogre2、ogre）。省略可能です",
         ),
         DeclareLaunchArgument(
             "render_engine_gui",
             default_value="",
-            description="Optional gz sim --render-engine-gui value",
+            description="gz sim の --render-engine-gui に渡す値を指定します。省略可能です",
         ),
         DeclareLaunchArgument(
             "render_engine_server",
             default_value="",
-            description="Optional gz sim --render-engine-server value",
+            description="gz sim の --render-engine-server に渡す値を指定します。省略可能です",
         ),
         DeclareLaunchArgument(
             "rviz",
             default_value="false",
-            description="Start RViz with the uec_localization FastLIO2D config",
+            description="uec_localization の FastLIO2D 設定を使用して RViz を起動します",
         ),
         OpaqueFunction(function=launch_setup),
     ])
