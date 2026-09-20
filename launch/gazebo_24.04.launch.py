@@ -258,7 +258,7 @@ def launch_setup(context, *args, **kwargs):
     gz_plugin_path = append_env_path(os.environ.get("GZ_SIM_SYSTEM_PLUGIN_PATH", ""), "/opt/ros/jazzy/lib")
 
     gz_cmd = [
-    os.path.expanduser("~/.local/bin/run-mesa-d3d12-fixed"),
+    # os.path.expanduser("~/.local/bin/run-mesa-d3d12-fixed"),
     "gz","sim","-r",]
     if not gui:
         gz_cmd.append("-s")
