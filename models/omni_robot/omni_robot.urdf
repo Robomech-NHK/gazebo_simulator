@@ -78,13 +78,13 @@
       <pose>0 0 0.025 0 0 0</pose>
       <always_on>true</always_on>
       <visualize>False</visualize>
-      <update_rate>40</update_rate>
+      <update_rate>20</update_rate>
       <topic>/scan</topic>
       <gz_frame_id>lidar_link</gz_frame_id>
       <ray>
         <scan>
           <horizontal>
-            <samples>1440</samples>
+            <samples>720</samples>
             <resolution>1</resolution>
             <min_angle>1.3962634015954636</min_angle>
             <max_angle>4.886921905584122</max_angle>

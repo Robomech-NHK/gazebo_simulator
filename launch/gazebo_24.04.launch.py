@@ -525,12 +525,12 @@ def generate_launch_description():
         ),
         DeclareLaunchArgument(
             "lidar_update_rate",
-            default_value="40",
+            default_value="20",
             description="omni_robot の gpu_lidar の更新周波数（Hz）",
         ),
         DeclareLaunchArgument(
             "lidar_samples",
-            default_value="1440",
+            default_value="720",
             description="omni_robot の gpu_lidar の水平方向のサンプル数",
         ),
         DeclareLaunchArgument(

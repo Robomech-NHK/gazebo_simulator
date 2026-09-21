@@ -206,12 +206,12 @@
       <sensor name='lidar' type='gpu_lidar'>
         <always_on>true</always_on>
         <visualize>false</visualize>
-        <update_rate>40</update_rate>
+        <update_rate>20</update_rate>
         <topic>/scan</topic>
         <ray>
           <scan>
             <horizontal>
-              <samples>1440</samples>
+              <samples>720</samples>
               <resolution>1</resolution>
               <min_angle>1.3962634015954636</min_angle>
               <max_angle>4.8869219055841224</max_angle>
