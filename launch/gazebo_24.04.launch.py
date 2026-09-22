@@ -1,6 +1,5 @@
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, ExecuteProcess, OpaqueFunction, RegisterEventHandler, TimerAction
-from launch.event_handlers import OnProcessExit
+from launch.actions import DeclareLaunchArgument, ExecuteProcess, OpaqueFunction, TimerAction
 from launch_ros.actions import Node
 from launch.substitutions import Command, LaunchConfiguration
 import os
@@ -403,26 +402,24 @@ def launch_setup(context, *args, **kwargs):
                         parameters=[{"use_sim_time": True}],
                     )
                 )
-        actions.append(
+        # Start the controller chain on fixed timers.  The previous
+        # OnProcessExit chain dynamically added the next actions while the
+        # launch service was shutting down, which could leave ros2 launch
+        # waiting for a ProcessExited event after the child was already gone.
+        actions.extend([
             TimerAction(
                 period=5.0,
-                actions=[
-                    joint_state_broadcaster_spawner,
-                    RegisterEventHandler(
-                        OnProcessExit(
-                            target_action=joint_state_broadcaster_spawner,
-                            on_exit=[forward_velocity_controller_spawner],
-                        )
-                    ),
-                    RegisterEventHandler(
-                        OnProcessExit(
-                            target_action=forward_velocity_controller_spawner,
-                            on_exit=control_nodes,
-                        )
-                    ),
-                ],
-            )
-        )
+                actions=[joint_state_broadcaster_spawner],
+            ),
+            TimerAction(
+                period=8.0,
+                actions=[forward_velocity_controller_spawner],
+            ),
+            TimerAction(
+                period=11.0,
+                actions=control_nodes,
+            ),
+        ])
 
     return actions
 
