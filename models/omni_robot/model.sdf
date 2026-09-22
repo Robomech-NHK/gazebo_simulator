@@ -3357,7 +3357,7 @@
       </visual>
     </link>
     <plugin name='gz_ros2_control::GazeboSimROS2ControlPlugin' filename='libgz_ros2_control-system.so'>
-      <parameters>/home/hao/Ubuntu_3/Robomech/ros2_ws_3_abu2027/install/gazebo_simulator/share/gazebo_simulator/config/controller_omni_robot.yaml</parameters>
+      <parameters>/home/robomech/ros2_ws/install/gazebo_simulator/share/gazebo_simulator/config/controller_omni_robot.yaml</parameters>
     </plugin>
     <plugin name='gz::sim::systems::PosePublisher' filename='libgz-sim-pose-publisher-system.so'>
       <publish_link_pose>true</publish_link_pose>
