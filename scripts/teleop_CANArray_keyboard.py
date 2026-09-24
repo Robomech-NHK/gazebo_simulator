@@ -13,6 +13,9 @@ else:
     import termios
     import tty
 
+# Publish destination
+CAN_PORT = 2
+CAN_TX_TOPIC = f"/can/tx/port{CAN_PORT}"
 
 msg = """
 このノードはキーボード入力を受け取り、各モータの指令値を CANArray メッセージとして
@@ -96,7 +99,7 @@ def main():
     read_only_descriptor = rcl_interfaces.msg.ParameterDescriptor(read_only=True)
     turn = node.declare_parameter('turn', 1.0, read_only_descriptor).value
 
-    pub = node.create_publisher(CANArray, '/can/tx', 10)
+    pub = node.create_publisher(CANArray, CAN_TX_TOPIC, 10)
 
     spinner = threading.Thread(target=rclpy.spin, args=(node,))
     spinner.start()
