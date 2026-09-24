@@ -15,9 +15,9 @@ def generate_launch_description():
             " ",
             PathJoinSubstitution(
                 [
-                    FindPackageShare("wheel_final_description"),
+                    FindPackageShare("mecanum_description"),
                     "urdf",
-                    "wheel_final.xacro",
+                    "mecanum.xacro",
                 ]
             ),
 
