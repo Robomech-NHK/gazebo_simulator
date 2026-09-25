@@ -1,0 +1,16 @@
+# ここを編集すると、CAN ID と joint 名の対応を変更できます。
+# - can_id: CAN メッセージの motor ID
+# - joint_name: Gazebo で動かす joint 名
+# - invert: 回転方向を反転したい場合は true
+# - control_type: 現在は velocity を使用。将来 position に拡張可能
+
+motors:
+  - can_id: 1
+    joint_name: motor_1
+    invert: false
+    control_type: velocity
+
+
+# Optional settings
+settings:
+  rpm_to_rad_s: 0.10471975511965977

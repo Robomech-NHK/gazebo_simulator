@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>mecanum</name>
+  <name>mecanum_module</name>
   <version>0.0.0</version>
-<description>The mecanum package</description>
+<description>The mecanum_module package</description>
   <maintainer email="fusion2urdf@prosystem24.de">Spacemaster85</maintainer>
   <license>MIT</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
