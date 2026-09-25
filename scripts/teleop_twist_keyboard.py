@@ -101,7 +101,7 @@ speedBindings = {
 }
 
 
-def getKey(settings, timeout=0.1):
+def getKey(settings, timeout=0.02):
     """
     ノンブロッキングで1文字読み取る。タイムアウト内に入力がなければ空文字を返す。
     """
