@@ -14,7 +14,7 @@ CanToGazeboNode::CanToGazeboNode() : rclcpp::Node("can_to_gazebo") {
 
   // Create subscription for CAN messages
   can_sub_ = create_subscription<uec_msgs::msg::CANArray>(
-      "/can/tx", 10,
+      "/can/tx/port2", 10,
       std::bind(&CanToGazeboNode::can_callback, this,
                 std::placeholders::_1));
 

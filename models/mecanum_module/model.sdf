@@ -1,0 +1,49 @@
+<sdf version='1.11'>
+  <model name='mecanum_module'>
+    <link name='base_link'>
+      <inertial>
+        <pose>0.013930521220351081 0.015409571278913171 0.05867537985716325 0 0 0</pose>
+        <mass>0.42978749999999999</mass>
+        <inertia>
+          <ixx>0.00017100000000000001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00017100000000000001</iyy>
+          <iyz>0</iyz>
+          <izz>6.3999999999999997e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/base_link.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/base_link.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.784313738 0.784313738 0.784313738 1</diffuse>
+          <ambient>0.784313738 0.784313738 0.784313738 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <plugin name='gz_ros2_control::GazeboSimROS2ControlPlugin' filename='libgz_ros2_control-system.so'>
+      <parameters>/home/yuto/ros2_ws/install/gazebo_simulator/share/gazebo_simulator/config/controller_mecanum_module.yaml</parameters>
+    </plugin>
+    <plugin name='gz::sim::systems::PosePublisher' filename='libgz-sim-pose-publisher-system.so'>
+      <publish_link_pose>true</publish_link_pose>
+      <publish_model_pose>true</publish_model_pose>
+      <use_pose_vector_msg>true</use_pose_vector_msg>
+      <update_frequency>50</update_frequency>
+    </plugin>
+  </model>
+</sdf>
