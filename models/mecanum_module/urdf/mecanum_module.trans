@@ -1,4 +1,147 @@
 <?xml version="1.0" ?>
 <robot name="mecanum_module" xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
+<transmission name="motor_1_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="motor_1">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor_1_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="roller_1_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="roller_1">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="roller_1_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="roller_2_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="roller_2">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="roller_2_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="roller_3_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="roller_3">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="roller_3_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="roller_4_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="roller_4">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="roller_4_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="roller_5_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="roller_5">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="roller_5_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="roller_6_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="roller_6">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="roller_6_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="roller_7_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="roller_7">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="roller_7_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="roller_8_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="roller_8">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="roller_8_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="roller_9_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="roller_9">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="roller_9_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="roller_10_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="roller_10">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="roller_10_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="roller_11_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="roller_11">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="roller_11_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="roller_12_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="roller_12">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="roller_12_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
 </robot>

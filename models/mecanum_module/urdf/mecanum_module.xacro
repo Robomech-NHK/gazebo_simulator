@@ -9,9 +9,9 @@
 
 <link name="base_link">
   <inertial>
-    <origin xyz="0.013930521220351077 0.015409571278913166 0.05867537985716325" rpy="0 0 0"/>
+    <origin xyz="0.015 0.015 0.030616438356164385" rpy="0 0 0"/>
     <mass value="0.4297875"/>
-    <inertia ixx="0.000171" iyy="0.000171" izz="6.4e-05" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+    <inertia ixx="0.000171" iyy="0.000171" izz="6.4e-05" ixy="0.0" iyz="0.0" ixz="0.0"/>
   </inertial>
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -28,12 +28,454 @@
   </collision>
 </link>
 
+<link name="mecanum_module_plate_1">
+  <inertial>
+    <origin xyz="5.242334344401911e-14 -8.297182385597068e-15 0.0006770847837933719" rpy="0 0 0"/>
+    <mass value="0.1545679765750766"/>
+    <inertia ixx="0.000139" iyy="0.000139" izz="0.000278" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.015 -0.015 -0.11" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_plate_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="opaque202209238"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.015 -0.015 -0.11" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_plate_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="mecanum_module_roller_1">
+  <inertial>
+    <origin xyz="0.016721067976369956 0.007470946457023307 -0.018314100662847124" rpy="0 0 0"/>
+    <mass value="0.09313994123705087"/>
+    <inertia ixx="1.2e-05" iyy="1.7e-05" izz="1.1e-05" ixy="-3e-06" iyz="3e-06" ixz="7e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.020578 0.042417 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="opaque767676"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.020578 0.042417 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="mecanum_module_roller_2">
+  <inertial>
+    <origin xyz="0.018286865372964194 -0.0018983857079393623 -0.018384811340966617" rpy="0 0 0"/>
+    <mass value="0.09313994123705087"/>
+    <inertia ixx="1.1e-05" iyy="1.8e-05" izz="1.1e-05" ixy="1e-06" iyz="-1e-06" ixz="7e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.008878 0.037513 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="opaque767676"/>
+  </visual>
+  <collision>
+    <origin xyz="0.008878 0.037513 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="mecanum_module_roller_3">
+  <inertial>
+    <origin xyz="0.01488724252304036 -0.010787074964668082 -0.01838481134096688" rpy="0 0 0"/>
+    <mass value="0.09313994123705087"/>
+    <inertia ixx="1.4e-05" iyy="1.6e-05" izz="1.1e-05" ixy="3e-06" iyz="-4e-06" ixz="6e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.031935 0.018539 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="opaque767676"/>
+  </visual>
+  <collision>
+    <origin xyz="0.031935 0.018539 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="mecanum_module_roller_4">
+  <inertial>
+    <origin xyz="0.007499790408296757 -0.016785628230974257 -0.018384811340968463" rpy="0 0 0"/>
+    <mass value="0.09313994123705087"/>
+    <inertia ixx="1.7e-05" iyy="1.2e-05" izz="1.1e-05" ixy="3e-06" iyz="-7e-06" ixz="3e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.042417 -0.009422 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="opaque767676"/>
+  </visual>
+  <collision>
+    <origin xyz="0.042417 -0.009422 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="mecanum_module_roller_5">
+  <inertial>
+    <origin xyz="-0.0018983857079342414 -0.018286865372961376 -0.01838481134097053" rpy="0 0 0"/>
+    <mass value="0.09313994123705087"/>
+    <inertia ixx="1.8e-05" iyy="1.1e-05" izz="1.1e-05" ixy="-1e-06" iyz="-7e-06" ixz="-1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.037513 -0.038878 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_5.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="opaque767676"/>
+  </visual>
+  <collision>
+    <origin xyz="0.037513 -0.038878 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_5.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="mecanum_module_roller_6">
+  <inertial>
+    <origin xyz="-0.010787074964665189 -0.014887242523036519 -0.01838481134097164" rpy="0 0 0"/>
+    <mass value="0.09313994123705087"/>
+    <inertia ixx="1.6e-05" iyy="1.4e-05" izz="1.1e-05" ixy="-3e-06" iyz="-6e-06" ixz="-4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.018539 -0.061935 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_6.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="opaque767676"/>
+  </visual>
+  <collision>
+    <origin xyz="0.018539 -0.061935 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_6.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="mecanum_module_roller_7">
+  <inertial>
+    <origin xyz="-0.01678562823097178 -0.007499790408291948 -0.01838481134097253" rpy="0 0 0"/>
+    <mass value="0.09313994123705087"/>
+    <inertia ixx="1.2e-05" iyy="1.7e-05" izz="1.1e-05" ixy="-3e-06" iyz="-3e-06" ixz="-7e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.009422 -0.072417 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_7.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="opaque767676"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.009422 -0.072417 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_7.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="mecanum_module_roller_8">
+  <inertial>
+    <origin xyz="-0.0182868653729581 0.001898385707939959 -0.018384811340972446" rpy="0 0 0"/>
+    <mass value="0.09313994123705087"/>
+    <inertia ixx="1.1e-05" iyy="1.8e-05" izz="1.1e-05" ixy="1e-06" iyz="1e-06" ixz="-7e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.038878 -0.067513 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_8.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="opaque767676"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.038878 -0.067513 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_8.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="mecanum_module_roller_9">
+  <inertial>
+    <origin xyz="-0.014887242523032425 0.010787074964670969 -0.01838481134097142" rpy="0 0 0"/>
+    <mass value="0.09313994123705087"/>
+    <inertia ixx="1.4e-05" iyy="1.6e-05" izz="1.1e-05" ixy="3e-06" iyz="4e-06" ixz="-6e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.061935 -0.048539 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_9.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="opaque767676"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.061935 -0.048539 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_9.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="mecanum_module_roller_10">
+  <inertial>
+    <origin xyz="-0.007499790408287382 0.01678562823097659 -0.018384811340969892" rpy="0 0 0"/>
+    <mass value="0.09313994123705087"/>
+    <inertia ixx="1.7e-05" iyy="1.2e-05" izz="1.1e-05" ixy="3e-06" iyz="7e-06" ixz="-3e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.072417 -0.020578 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_10.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="opaque767676"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.072417 -0.020578 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_10.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="mecanum_module_roller_11">
+  <inertial>
+    <origin xyz="0.0018983857079438587 0.018286865372961997 -0.018384811340968185" rpy="0 0 0"/>
+    <mass value="0.09313994123705087"/>
+    <inertia ixx="1.8e-05" iyy="1.1e-05" izz="1.1e-05" ixy="-1e-06" iyz="7e-06" ixz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.067513 0.008878 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_11.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="opaque767676"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.067513 0.008878 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_11.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="mecanum_module_roller_12">
+  <inertial>
+    <origin xyz="0.010745586119742058 0.014829982801187299 -0.018314100662848012" rpy="0 0 0"/>
+    <mass value="0.09313994123705087"/>
+    <inertia ixx="1.6e-05" iyy="1.4e-05" izz="1.1e-05" ixy="-3e-06" iyz="6e-06" ixz="4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.048539 0.031935 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_12.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="opaque767676"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.048539 0.031935 -0.103883" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mecanum_module/meshes/mecanum_module_roller_12.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="motor_1" type="continuous">
+  <origin xyz="0.015 0.015 0.11" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="mecanum_module_plate_1"/>
+  <axis xyz="-0.0 -0.0 1.0"/>
+</joint>
+
+<joint name="roller_1" type="continuous">
+  <origin xyz="0.005578 -0.057417 -0.006117" rpy="0 0 0"/>
+  <parent link="mecanum_module_plate_1"/>
+  <child link="mecanum_module_roller_1"/>
+  <axis xyz="-0.645603 -0.28844 0.707107"/>
+</joint>
+
+<joint name="roller_2" type="continuous">
+  <origin xyz="-0.023878 -0.052513 -0.006117" rpy="0 0 0"/>
+  <parent link="mecanum_module_plate_1"/>
+  <child link="mecanum_module_roller_2"/>
+  <axis xyz="0.703328 -0.073005 -0.707107"/>
+</joint>
+
+<joint name="roller_3" type="continuous">
+  <origin xyz="-0.046935 -0.033539 -0.006117" rpy="0 0 0"/>
+  <parent link="mecanum_module_plate_1"/>
+  <child link="mecanum_module_roller_3"/>
+  <axis xyz="0.572597 -0.414888 -0.707107"/>
+</joint>
+
+<joint name="roller_4" type="continuous">
+  <origin xyz="-0.057417 -0.005578 -0.006117" rpy="0 0 0"/>
+  <parent link="mecanum_module_plate_1"/>
+  <child link="mecanum_module_roller_4"/>
+  <axis xyz="0.28844 -0.645603 -0.707107"/>
+</joint>
+
+<joint name="roller_5" type="continuous">
+  <origin xyz="-0.052513 0.023878 -0.006117" rpy="0 0 0"/>
+  <parent link="mecanum_module_plate_1"/>
+  <child link="mecanum_module_roller_5"/>
+  <axis xyz="-0.073005 -0.703328 -0.707107"/>
+</joint>
+
+<joint name="roller_6" type="continuous">
+  <origin xyz="-0.033539 0.046935 -0.006117" rpy="0 0 0"/>
+  <parent link="mecanum_module_plate_1"/>
+  <child link="mecanum_module_roller_6"/>
+  <axis xyz="-0.414888 -0.572597 -0.707107"/>
+</joint>
+
+<joint name="roller_7" type="continuous">
+  <origin xyz="-0.005578 0.057417 -0.006117" rpy="0 0 0"/>
+  <parent link="mecanum_module_plate_1"/>
+  <child link="mecanum_module_roller_7"/>
+  <axis xyz="-0.645603 -0.28844 -0.707107"/>
+</joint>
+
+<joint name="roller_8" type="continuous">
+  <origin xyz="0.023878 0.052513 -0.006117" rpy="0 0 0"/>
+  <parent link="mecanum_module_plate_1"/>
+  <child link="mecanum_module_roller_8"/>
+  <axis xyz="-0.703328 0.073005 -0.707107"/>
+</joint>
+
+<joint name="roller_9" type="continuous">
+  <origin xyz="0.046935 0.033539 -0.006117" rpy="0 0 0"/>
+  <parent link="mecanum_module_plate_1"/>
+  <child link="mecanum_module_roller_9"/>
+  <axis xyz="-0.572597 0.414888 -0.707107"/>
+</joint>
+
+<joint name="roller_10" type="continuous">
+  <origin xyz="0.057417 0.005578 -0.006117" rpy="0 0 0"/>
+  <parent link="mecanum_module_plate_1"/>
+  <child link="mecanum_module_roller_10"/>
+  <axis xyz="-0.28844 0.645603 -0.707107"/>
+</joint>
+
+<joint name="roller_11" type="continuous">
+  <origin xyz="0.052513 -0.023878 -0.006117" rpy="0 0 0"/>
+  <parent link="mecanum_module_plate_1"/>
+  <child link="mecanum_module_roller_11"/>
+  <axis xyz="0.073005 0.703328 -0.707107"/>
+</joint>
+
+<joint name="roller_12" type="continuous">
+  <origin xyz="0.033539 -0.046935 -0.006117" rpy="0 0 0"/>
+  <parent link="mecanum_module_plate_1"/>
+  <child link="mecanum_module_roller_12"/>
+  <axis xyz="-0.414888 -0.572597 0.707107"/>
+</joint>
+
 
 <!-- ros2_control plugin config (keep velocity interfaces compatible with existing controllers) -->
 <ros2_control name="GazeboSystem" type="system">
   <hardware>
     <plugin>gz_ros2_control/GazeboSimSystem</plugin>
   </hardware>
+
+  <joint name="motor_1">
+    <command_interface name="velocity"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="roller_1">
+    <command_interface name="velocity"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="roller_2">
+    <command_interface name="velocity"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="roller_3">
+    <command_interface name="velocity"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="roller_4">
+    <command_interface name="velocity"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="roller_5">
+    <command_interface name="velocity"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="roller_6">
+    <command_interface name="velocity"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="roller_7">
+    <command_interface name="velocity"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="roller_8">
+    <command_interface name="velocity"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="roller_9">
+    <command_interface name="velocity"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="roller_10">
+    <command_interface name="velocity"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="roller_11">
+    <command_interface name="velocity"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="roller_12">
+    <command_interface name="velocity"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
 
 
 </ros2_control>

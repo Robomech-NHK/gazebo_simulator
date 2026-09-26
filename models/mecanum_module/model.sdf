@@ -2,7 +2,7 @@
   <model name='mecanum_module'>
     <link name='base_link'>
       <inertial>
-        <pose>0.013930521220351081 0.015409571278913171 0.05867537985716325 0 0 0</pose>
+        <pose>0.014999999999999999 0.014999999999999999 0.030616438356164389 0 0 0</pose>
         <mass>0.42978749999999999</mass>
         <inertia>
           <ixx>0.00017100000000000001</ixx>
@@ -33,6 +33,695 @@
         <material>
           <diffuse>0.784313738 0.784313738 0.784313738 1</diffuse>
           <ambient>0.784313738 0.784313738 0.784313738 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='motor_1' type='revolute'>
+      <pose relative_to='base_link'>0.014999999999999999 0.014999999999999999 0.11 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>mecanum_module_plate_1</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='mecanum_module_plate_1'>
+      <pose relative_to='motor_1'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>5.242334344401911e-14 -8.2971823855970683e-15 0.00067708478379337189 0 0 0</pose>
+        <mass>0.15456797657507659</mass>
+        <inertia>
+          <ixx>0.00013899999999999999</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00013899999999999999</iyy>
+          <iyz>0</iyz>
+          <izz>0.00027799999999999998</izz>
+        </inertia>
+      </inertial>
+      <collision name='mecanum_module_plate_1_collision'>
+        <pose>-0.014999999999999999 -0.014999999999999999 -0.11 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_plate_1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='mecanum_module_plate_1_visual'>
+        <pose>-0.014999999999999999 -0.014999999999999999 -0.11 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_plate_1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.990196109 1 1 1</diffuse>
+          <ambient>0.990196109 1 1 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='roller_1' type='revolute'>
+      <pose relative_to='mecanum_module_plate_1'>0.0055779999999999996 -0.057417000000000003 -0.006117 0 0 0</pose>
+      <parent>mecanum_module_plate_1</parent>
+      <child>mecanum_module_roller_1</child>
+      <axis>
+        <xyz>-0.64560300000000004 -0.28843999999999997 0.70710700000000004</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='mecanum_module_roller_1'>
+      <pose relative_to='roller_1'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0.01672106797636996 0.0074709464570233072 -0.018314100662847121 0 0 0</pose>
+        <mass>0.093139941237050869</mass>
+        <inertia>
+          <ixx>1.2e-05</ixx>
+          <ixy>-3.0000000000000001e-06</ixy>
+          <ixz>6.9999999999999999e-06</ixz>
+          <iyy>1.7e-05</iyy>
+          <iyz>3.0000000000000001e-06</iyz>
+          <izz>1.1e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='mecanum_module_roller_1_collision'>
+        <pose>-0.020577999999999999 0.042417000000000003 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='mecanum_module_roller_1_visual'>
+        <pose>-0.020577999999999999 0.042417000000000003 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.372549027 0.372549027 0.372549027 1</diffuse>
+          <ambient>0.372549027 0.372549027 0.372549027 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='roller_10' type='revolute'>
+      <pose relative_to='mecanum_module_plate_1'>0.057417000000000003 0.0055779999999999996 -0.006117 0 0 0</pose>
+      <parent>mecanum_module_plate_1</parent>
+      <child>mecanum_module_roller_10</child>
+      <axis>
+        <xyz>-0.28843999999999997 0.64560300000000004 -0.70710700000000004</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='mecanum_module_roller_10'>
+      <pose relative_to='roller_10'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.0074997904082873823 0.016785628230976589 -0.018384811340969889 0 0 0</pose>
+        <mass>0.093139941237050869</mass>
+        <inertia>
+          <ixx>1.7e-05</ixx>
+          <ixy>3.0000000000000001e-06</ixy>
+          <ixz>-3.0000000000000001e-06</ixz>
+          <iyy>1.2e-05</iyy>
+          <iyz>6.9999999999999999e-06</iyz>
+          <izz>1.1e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='mecanum_module_roller_10_collision'>
+        <pose>-0.072416999999999995 -0.020577999999999999 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_10.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='mecanum_module_roller_10_visual'>
+        <pose>-0.072416999999999995 -0.020577999999999999 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_10.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.372549027 0.372549027 0.372549027 1</diffuse>
+          <ambient>0.372549027 0.372549027 0.372549027 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='roller_11' type='revolute'>
+      <pose relative_to='mecanum_module_plate_1'>0.052512999999999997 -0.023878 -0.006117 0 0 0</pose>
+      <parent>mecanum_module_plate_1</parent>
+      <child>mecanum_module_roller_11</child>
+      <axis>
+        <xyz>0.073005 0.70332799999999995 -0.70710700000000004</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='mecanum_module_roller_11'>
+      <pose relative_to='roller_11'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0.001898385707943859 0.018286865372962001 -0.018384811340968189 0 0 0</pose>
+        <mass>0.093139941237050869</mass>
+        <inertia>
+          <ixx>1.8e-05</ixx>
+          <ixy>-9.9999999999999995e-07</ixy>
+          <ixz>9.9999999999999995e-07</ixz>
+          <iyy>1.1e-05</iyy>
+          <iyz>6.9999999999999999e-06</iyz>
+          <izz>1.1e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='mecanum_module_roller_11_collision'>
+        <pose>-0.067513000000000004 0.0088780000000000005 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_11.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='mecanum_module_roller_11_visual'>
+        <pose>-0.067513000000000004 0.0088780000000000005 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_11.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.372549027 0.372549027 0.372549027 1</diffuse>
+          <ambient>0.372549027 0.372549027 0.372549027 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='roller_12' type='revolute'>
+      <pose relative_to='mecanum_module_plate_1'>0.033538999999999999 -0.046934999999999998 -0.006117 0 0 0</pose>
+      <parent>mecanum_module_plate_1</parent>
+      <child>mecanum_module_roller_12</child>
+      <axis>
+        <xyz>-0.41488799999999998 -0.57259700000000002 0.70710700000000004</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='mecanum_module_roller_12'>
+      <pose relative_to='roller_12'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0.01074558611974206 0.014829982801187301 -0.018314100662848009 0 0 0</pose>
+        <mass>0.093139941237050869</mass>
+        <inertia>
+          <ixx>1.5999999999999999e-05</ixx>
+          <ixy>-3.0000000000000001e-06</ixy>
+          <ixz>3.9999999999999998e-06</ixz>
+          <iyy>1.4e-05</iyy>
+          <iyz>6.0000000000000002e-06</iyz>
+          <izz>1.1e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='mecanum_module_roller_12_collision'>
+        <pose>-0.048538999999999999 0.031934999999999998 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_12.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='mecanum_module_roller_12_visual'>
+        <pose>-0.048538999999999999 0.031934999999999998 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_12.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.372549027 0.372549027 0.372549027 1</diffuse>
+          <ambient>0.372549027 0.372549027 0.372549027 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='roller_2' type='revolute'>
+      <pose relative_to='mecanum_module_plate_1'>-0.023878 -0.052512999999999997 -0.006117 0 0 0</pose>
+      <parent>mecanum_module_plate_1</parent>
+      <child>mecanum_module_roller_2</child>
+      <axis>
+        <xyz>0.70332799999999995 -0.073005 -0.70710700000000004</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='mecanum_module_roller_2'>
+      <pose relative_to='roller_2'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0.01828686537296419 -0.0018983857079393619 -0.01838481134096662 0 0 0</pose>
+        <mass>0.093139941237050869</mass>
+        <inertia>
+          <ixx>1.1e-05</ixx>
+          <ixy>9.9999999999999995e-07</ixy>
+          <ixz>6.9999999999999999e-06</ixz>
+          <iyy>1.8e-05</iyy>
+          <iyz>-9.9999999999999995e-07</iyz>
+          <izz>1.1e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='mecanum_module_roller_2_collision'>
+        <pose>0.0088780000000000005 0.037512999999999998 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_2.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='mecanum_module_roller_2_visual'>
+        <pose>0.0088780000000000005 0.037512999999999998 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_2.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.372549027 0.372549027 0.372549027 1</diffuse>
+          <ambient>0.372549027 0.372549027 0.372549027 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='roller_3' type='revolute'>
+      <pose relative_to='mecanum_module_plate_1'>-0.046934999999999998 -0.033538999999999999 -0.006117 0 0 0</pose>
+      <parent>mecanum_module_plate_1</parent>
+      <child>mecanum_module_roller_3</child>
+      <axis>
+        <xyz>0.57259700000000002 -0.41488799999999998 -0.70710700000000004</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='mecanum_module_roller_3'>
+      <pose relative_to='roller_3'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0.014887242523040359 -0.01078707496466808 -0.018384811340966881 0 0 0</pose>
+        <mass>0.093139941237050869</mass>
+        <inertia>
+          <ixx>1.4e-05</ixx>
+          <ixy>3.0000000000000001e-06</ixy>
+          <ixz>6.0000000000000002e-06</ixz>
+          <iyy>1.5999999999999999e-05</iyy>
+          <iyz>-3.9999999999999998e-06</iyz>
+          <izz>1.1e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='mecanum_module_roller_3_collision'>
+        <pose>0.031934999999999998 0.018539 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_3.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='mecanum_module_roller_3_visual'>
+        <pose>0.031934999999999998 0.018539 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_3.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.372549027 0.372549027 0.372549027 1</diffuse>
+          <ambient>0.372549027 0.372549027 0.372549027 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='roller_4' type='revolute'>
+      <pose relative_to='mecanum_module_plate_1'>-0.057417000000000003 -0.0055779999999999996 -0.006117 0 0 0</pose>
+      <parent>mecanum_module_plate_1</parent>
+      <child>mecanum_module_roller_4</child>
+      <axis>
+        <xyz>0.28843999999999997 -0.64560300000000004 -0.70710700000000004</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='mecanum_module_roller_4'>
+      <pose relative_to='roller_4'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0.0074997904082967567 -0.016785628230974261 -0.018384811340968459 0 0 0</pose>
+        <mass>0.093139941237050869</mass>
+        <inertia>
+          <ixx>1.7e-05</ixx>
+          <ixy>3.0000000000000001e-06</ixy>
+          <ixz>3.0000000000000001e-06</ixz>
+          <iyy>1.2e-05</iyy>
+          <iyz>-6.9999999999999999e-06</iyz>
+          <izz>1.1e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='mecanum_module_roller_4_collision'>
+        <pose>0.042417000000000003 -0.0094219999999999998 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_4.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='mecanum_module_roller_4_visual'>
+        <pose>0.042417000000000003 -0.0094219999999999998 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_4.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.372549027 0.372549027 0.372549027 1</diffuse>
+          <ambient>0.372549027 0.372549027 0.372549027 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='roller_5' type='revolute'>
+      <pose relative_to='mecanum_module_plate_1'>-0.052512999999999997 0.023878 -0.006117 0 0 0</pose>
+      <parent>mecanum_module_plate_1</parent>
+      <child>mecanum_module_roller_5</child>
+      <axis>
+        <xyz>-0.073005 -0.70332799999999995 -0.70710700000000004</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='mecanum_module_roller_5'>
+      <pose relative_to='roller_5'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.001898385707934241 -0.01828686537296138 -0.01838481134097053 0 0 0</pose>
+        <mass>0.093139941237050869</mass>
+        <inertia>
+          <ixx>1.8e-05</ixx>
+          <ixy>-9.9999999999999995e-07</ixy>
+          <ixz>-9.9999999999999995e-07</ixz>
+          <iyy>1.1e-05</iyy>
+          <iyz>-6.9999999999999999e-06</iyz>
+          <izz>1.1e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='mecanum_module_roller_5_collision'>
+        <pose>0.037512999999999998 -0.038878000000000003 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_5.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='mecanum_module_roller_5_visual'>
+        <pose>0.037512999999999998 -0.038878000000000003 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_5.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.372549027 0.372549027 0.372549027 1</diffuse>
+          <ambient>0.372549027 0.372549027 0.372549027 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='roller_6' type='revolute'>
+      <pose relative_to='mecanum_module_plate_1'>-0.033538999999999999 0.046934999999999998 -0.006117 0 0 0</pose>
+      <parent>mecanum_module_plate_1</parent>
+      <child>mecanum_module_roller_6</child>
+      <axis>
+        <xyz>-0.41488799999999998 -0.57259700000000002 -0.70710700000000004</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='mecanum_module_roller_6'>
+      <pose relative_to='roller_6'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.01078707496466519 -0.014887242523036521 -0.018384811340971641 0 0 0</pose>
+        <mass>0.093139941237050869</mass>
+        <inertia>
+          <ixx>1.5999999999999999e-05</ixx>
+          <ixy>-3.0000000000000001e-06</ixy>
+          <ixz>-3.9999999999999998e-06</ixz>
+          <iyy>1.4e-05</iyy>
+          <iyz>-6.0000000000000002e-06</iyz>
+          <izz>1.1e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='mecanum_module_roller_6_collision'>
+        <pose>0.018539 -0.061934999999999997 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_6.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='mecanum_module_roller_6_visual'>
+        <pose>0.018539 -0.061934999999999997 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_6.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.372549027 0.372549027 0.372549027 1</diffuse>
+          <ambient>0.372549027 0.372549027 0.372549027 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='roller_7' type='revolute'>
+      <pose relative_to='mecanum_module_plate_1'>-0.0055779999999999996 0.057417000000000003 -0.006117 0 0 0</pose>
+      <parent>mecanum_module_plate_1</parent>
+      <child>mecanum_module_roller_7</child>
+      <axis>
+        <xyz>-0.64560300000000004 -0.28843999999999997 -0.70710700000000004</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='mecanum_module_roller_7'>
+      <pose relative_to='roller_7'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.01678562823097178 -0.0074997904082919481 -0.018384811340972529 0 0 0</pose>
+        <mass>0.093139941237050869</mass>
+        <inertia>
+          <ixx>1.2e-05</ixx>
+          <ixy>-3.0000000000000001e-06</ixy>
+          <ixz>-6.9999999999999999e-06</ixz>
+          <iyy>1.7e-05</iyy>
+          <iyz>-3.0000000000000001e-06</iyz>
+          <izz>1.1e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='mecanum_module_roller_7_collision'>
+        <pose>-0.0094219999999999998 -0.072416999999999995 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_7.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='mecanum_module_roller_7_visual'>
+        <pose>-0.0094219999999999998 -0.072416999999999995 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_7.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.372549027 0.372549027 0.372549027 1</diffuse>
+          <ambient>0.372549027 0.372549027 0.372549027 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='roller_8' type='revolute'>
+      <pose relative_to='mecanum_module_plate_1'>0.023878 0.052512999999999997 -0.006117 0 0 0</pose>
+      <parent>mecanum_module_plate_1</parent>
+      <child>mecanum_module_roller_8</child>
+      <axis>
+        <xyz>-0.70332799999999995 0.073005 -0.70710700000000004</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='mecanum_module_roller_8'>
+      <pose relative_to='roller_8'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.018286865372958101 0.0018983857079399591 -0.018384811340972449 0 0 0</pose>
+        <mass>0.093139941237050869</mass>
+        <inertia>
+          <ixx>1.1e-05</ixx>
+          <ixy>9.9999999999999995e-07</ixy>
+          <ixz>-6.9999999999999999e-06</ixz>
+          <iyy>1.8e-05</iyy>
+          <iyz>9.9999999999999995e-07</iyz>
+          <izz>1.1e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='mecanum_module_roller_8_collision'>
+        <pose>-0.038878000000000003 -0.067513000000000004 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_8.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='mecanum_module_roller_8_visual'>
+        <pose>-0.038878000000000003 -0.067513000000000004 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_8.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.372549027 0.372549027 0.372549027 1</diffuse>
+          <ambient>0.372549027 0.372549027 0.372549027 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='roller_9' type='revolute'>
+      <pose relative_to='mecanum_module_plate_1'>0.046934999999999998 0.033538999999999999 -0.006117 0 0 0</pose>
+      <parent>mecanum_module_plate_1</parent>
+      <child>mecanum_module_roller_9</child>
+      <axis>
+        <xyz>-0.57259700000000002 0.41488799999999998 -0.70710700000000004</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='mecanum_module_roller_9'>
+      <pose relative_to='roller_9'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.01488724252303242 0.010787074964670971 -0.018384811340971419 0 0 0</pose>
+        <mass>0.093139941237050869</mass>
+        <inertia>
+          <ixx>1.4e-05</ixx>
+          <ixy>3.0000000000000001e-06</ixy>
+          <ixz>-6.0000000000000002e-06</ixz>
+          <iyy>1.5999999999999999e-05</iyy>
+          <iyz>3.9999999999999998e-06</iyz>
+          <izz>1.1e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='mecanum_module_roller_9_collision'>
+        <pose>-0.061934999999999997 -0.048538999999999999 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_9.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='mecanum_module_roller_9_visual'>
+        <pose>-0.061934999999999997 -0.048538999999999999 -0.103883 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/mecanum_module_roller_9.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.372549027 0.372549027 0.372549027 1</diffuse>
+          <ambient>0.372549027 0.372549027 0.372549027 1</ambient>
         </material>
       </visual>
     </link>
