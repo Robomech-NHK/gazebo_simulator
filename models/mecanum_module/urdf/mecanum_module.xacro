@@ -637,7 +637,7 @@
   </collision>
 </link>
 
-<link name="motor_1">
+<link name="motor_body_1">
   <inertial>
     <origin xyz="-0.0006164383561644039 3.469446951953614e-17 0.014999999999999993" rpy="0 0 0"/>
     <mass value="0.4297875"/>
@@ -646,19 +646,19 @@
   <visual>
     <origin xyz="-0.03 -0.04 -0.005" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://mecanum_module/meshes/motor_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mecanum_module/meshes/motor_body_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="_"/>
   </visual>
   <collision>
     <origin xyz="-0.03 -0.04 -0.005" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://mecanum_module/meshes/motor_1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mecanum_module/meshes/motor_body_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="motor_2">
+<link name="motor_body_2">
   <inertial>
     <origin xyz="-0.0006164383561643103 0.0 0.014999999999999947" rpy="0 0 0"/>
     <mass value="0.4297875"/>
@@ -667,19 +667,19 @@
   <visual>
     <origin xyz="-0.03 -0.46 -0.005" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://mecanum_module/meshes/motor_2.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mecanum_module/meshes/motor_body_2.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="_"/>
   </visual>
   <collision>
     <origin xyz="-0.03 -0.46 -0.005" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://mecanum_module/meshes/motor_2.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mecanum_module/meshes/motor_body_2.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="motor_3">
+<link name="motor_body_3">
   <inertial>
     <origin xyz="0.0006164383561643727 -1.1102230246251565e-16 0.014999999999999986" rpy="0 0 0"/>
     <mass value="0.4297875"/>
@@ -688,19 +688,19 @@
   <visual>
     <origin xyz="-0.47 -0.46 -0.005" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://mecanum_module/meshes/motor_3.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mecanum_module/meshes/motor_body_3.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="_"/>
   </visual>
   <collision>
     <origin xyz="-0.47 -0.46 -0.005" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://mecanum_module/meshes/motor_3.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mecanum_module/meshes/motor_body_3.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="motor_4">
+<link name="motor_body_4">
   <inertial>
     <origin xyz="0.0006164383561643727 2.7755575615628914e-17 0.014999999999999947" rpy="0 0 0"/>
     <mass value="0.4297875"/>
@@ -709,14 +709,14 @@
   <visual>
     <origin xyz="-0.47 -0.04 -0.005" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://mecanum_module/meshes/motor_4.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mecanum_module/meshes/motor_body_4.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="_"/>
   </visual>
   <collision>
     <origin xyz="-0.47 -0.04 -0.005" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://mecanum_module/meshes/motor_4.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mecanum_module/meshes/motor_body_4.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -1206,7 +1206,7 @@
 
 <joint name="motor_1" type="continuous">
   <origin xyz="-0.08 0.0 0.015" rpy="0 0 0"/>
-  <parent link="motor_1"/>
+  <parent link="motor_body_1"/>
   <child link="mecanum_module_plate_1"/>
   <axis xyz="-1.0 -0.0 0.0"/>
 </joint>
@@ -1297,7 +1297,7 @@
 
 <joint name="motor_2" type="continuous">
   <origin xyz="-0.08 0.0 0.015" rpy="0 0 0"/>
-  <parent link="motor_2"/>
+  <parent link="motor_body_2"/>
   <child link="mecanum_module_plate_r_1"/>
   <axis xyz="1.0 0.0 0.0"/>
 </joint>
@@ -1388,7 +1388,7 @@
 
 <joint name="motor_3" type="continuous">
   <origin xyz="0.08 0.0 0.015" rpy="0 0 0"/>
-  <parent link="motor_3"/>
+  <parent link="motor_body_3"/>
   <child link="mecanum_module_plate_2"/>
   <axis xyz="1.0 -0.0 0.0"/>
 </joint>
@@ -1402,7 +1402,7 @@
 
 <joint name="motor_4" type="continuous">
   <origin xyz="0.08 0.0 0.015" rpy="0 0 0"/>
-  <parent link="motor_4"/>
+  <parent link="motor_body_4"/>
   <child link="mecanum_module_plate_r_2"/>
   <axis xyz="-1.0 -0.0 0.0"/>
 </joint>
@@ -1410,25 +1410,25 @@
 <joint name="motor_lock_1" type="fixed">
   <origin xyz="0.03 0.04 0.005" rpy="0 0 0"/>
   <parent link="base_link"/>
-  <child link="motor_1"/>
+  <child link="motor_body_1"/>
 </joint>
 
 <joint name="motor_lock_2" type="fixed">
   <origin xyz="0.03 0.46 0.005" rpy="0 0 0"/>
   <parent link="base_link"/>
-  <child link="motor_2"/>
+  <child link="motor_body_2"/>
 </joint>
 
 <joint name="motor_lock_3" type="fixed">
   <origin xyz="0.47 0.46 0.005" rpy="0 0 0"/>
   <parent link="base_link"/>
-  <child link="motor_3"/>
+  <child link="motor_body_3"/>
 </joint>
 
 <joint name="motor_lock_4" type="fixed">
   <origin xyz="0.47 0.04 0.005" rpy="0 0 0"/>
   <parent link="base_link"/>
-  <child link="motor_4"/>
+  <child link="motor_body_4"/>
 </joint>
 
 <joint name="roller3_2" type="continuous">
