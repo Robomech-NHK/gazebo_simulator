@@ -20,3 +20,6 @@ forward_velocity_controller:
   ros__parameters:
     joints:
       - motor_1
+      - motor_2
+      - motor_3
+      - motor_4

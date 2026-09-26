@@ -9,6 +9,21 @@ motors:
     joint_name: motor_1
     invert: false
     control_type: velocity
+    
+    - can_id: 2
+    joint_name: motor_2
+    invert: false
+    control_type: velocity
+    
+    - can_id: 3
+    joint_name: motor_3
+    invert: false
+    control_type: velocity
+    
+    - can_id: 4
+    joint_name: motor_4
+    invert: false
+    control_type: velocity
 
 
 # Optional settings
